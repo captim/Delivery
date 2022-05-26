@@ -27,21 +27,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/anonymous*").anonymous()
-                .antMatchers("/login*").permitAll()
-                .antMatchers("/resources/**").permitAll()
-                .antMatchers("/css/**").permitAll()
+                //.antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/login", "/registration", "/resources/**", "/css/**", "/welcome", "/").permitAll()
+                .antMatchers().permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                //.loginPage("/login.jsp")
+                .loginPage("/login")
                 //.loginProcessingUrl("/perform_login")
                 .defaultSuccessUrl("/welcome", true)
                 .failureUrl("/login?error=true")
                 .and()
                 .logout()
                 .logoutUrl("/perform_logout")
+                .logoutSuccessUrl("/welcome")
                 .deleteCookies("JSESSIONID");
     }
     @Bean

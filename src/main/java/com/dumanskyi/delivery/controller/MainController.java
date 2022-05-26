@@ -20,4 +20,10 @@ public class MainController {
     public String loginPage() {
         return "login";
     }
+
+    @GetMapping(path = "/registration")
+    public String registrationPage() {
+        return "registration";
+    }
+
 }
