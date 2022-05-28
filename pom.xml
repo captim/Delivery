@@ -15,7 +15,7 @@
     <name>delivery</name>
     <description>Demo project for Spring Boot</description>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>1.11</java.version>
         <start-class>com.dumanskyi.delivery.config.DeliveryApplication</start-class>
     </properties>
     <dependencies>

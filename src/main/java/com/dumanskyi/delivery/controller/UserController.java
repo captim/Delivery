@@ -17,7 +17,8 @@ import java.util.List;
 @Controller
 public class UserController {
     final UserRepository userRepository;
-    private final String NOT_UNIQUE_EMAIL_OR_USERNAME_MSG = "This username and/or email are already used!";
+    private final String NOT_UNIQUE_EMAIL_MSG = "This email is already used!";
+    private final String NOT_UNIQUE_USERNAME_MSG = "This username is already used!";
     private final String CUSTOMER_CREATED = "Customer successfully created!";
 
     public UserController(UserRepository userRepository) {
@@ -31,8 +32,10 @@ public class UserController {
     }
     @PostMapping("/createCustomer")
     public ResponseEntity<ResponseMessage<?>> createNewCustomer(@RequestBody User user) {
-        if(userRepository.findUserByEmailEqualsOrUsernameEquals(user.getEmail(), user.getUsername()) != null) {
-            return ResponseUtil.noBodyResponseMessage(NOT_UNIQUE_EMAIL_OR_USERNAME_MSG, HttpStatus.INTERNAL_SERVER_ERROR);
+        if (userRepository.findUserByEmailEquals(user.getEmail()) != null) {
+            return ResponseUtil.noBodyResponseMessage(NOT_UNIQUE_EMAIL_MSG, HttpStatus.INTERNAL_SERVER_ERROR);
+        } else if (userRepository.findUserByUsernameEquals(user.getUsername()) != null) {
+            return ResponseUtil.noBodyResponseMessage(NOT_UNIQUE_USERNAME_MSG, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         user.setRole(Role.CUSTOMER);
         userRepository.save(user);
