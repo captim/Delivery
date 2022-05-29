@@ -20,23 +20,23 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-signup" id="signup-form" method="post" action="/createCustomer">
+    <form class="form-signin" id="signup-form">
         <h2 class="form-signin-heading">Please sign up</h2>
         <p>
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+            <label for="email" class="sr-only">Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" onchange="uniqueEmailValidation(document.getElementById('email'))" required autofocus>
         </p>
         <p>
-            <label for="email" class="sr-only">Email</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" onchange="uniqueUsernameValidation(document.getElementById('username'))" required autofocus>
         </p>
         <p>
             <label for="firstname" class="sr-only">First name</label>
-            <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First name" required autofocus>
+            <input type="text" id="firstname" name="firstName" class="form-control" placeholder="First name" required autofocus>
         </p>
         <p>
             <label for="secondname" class="sr-only">Second name</label>
-            <input type="text" id="secondname" name="secondname" class="form-control" placeholder="Second name" required autofocus>
+            <input type="text" id="secondname" name="lastName" class="form-control" placeholder="Last name" required autofocus>
         </p>
         <p>
             <label for="patronymic" class="sr-only">Patronymic</label>
@@ -46,7 +46,7 @@
             <label for="password" class="sr-only">Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <input type="button" value="Sign up" class="btn btn-lg btn-primary btn-block" onclick="createCustomer()">
         <p class="mt-2">Already have an account? <a href="/login">Log In</a></p>
     </form>
 </div>

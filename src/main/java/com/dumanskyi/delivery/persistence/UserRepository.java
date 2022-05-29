@@ -4,9 +4,12 @@ import com.dumanskyi.delivery.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-    User findUserByEmailEqualsOrUsernameEquals(String email, String username);
+    Optional<User> findUserByEmailEqualsOrUsernameEquals(String email, String username);
     User findUserByEmailEquals(String email);
     User findUserByUsernameEquals(String username);
+    User findByUsername(String username);
 }

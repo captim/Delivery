@@ -1,6 +1,3 @@
-insert into delivery_db.roles (role_id, role_name)
-values (0, 'CUSTOMER'), (1, 'ADMIN'), (2, 'DELIVERY_MAN');
-
 insert into delivery_db.statuses (status_id, status_name, status_description)
 values (0, 'NOT_RECEIVED', 'Package is not received yet. We are waiting for it.'),
        (1, 'RECEIVED', 'Package is already received. We are going to send it.'),
