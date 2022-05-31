@@ -1,4 +1,4 @@
-package com.dumanskyi.delivery.controller;
+package com.dumanskyi.delivery.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

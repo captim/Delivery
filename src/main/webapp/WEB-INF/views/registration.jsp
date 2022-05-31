@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,44 +11,43 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/resources/scripts/registration.js"></script>
-    <script>
-        $('.form-signup').submit(function(){
-            let header_url = "resources/anonym_header.html";
-            $("#header").load(header_url);
-        });
-    </script>
 </head>
 <body>
 <div class="container">
-    <form class="form-signin" id="signup-form">
+    <form:form class="form-signin" id="signup-form" action="/registration" modelAttribute="user">
         <h2 class="form-signin-heading">Please sign up</h2>
         <p>
-            <label for="email" class="sr-only">Email</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Email" onchange="uniqueEmailValidation(document.getElementById('email'))" required autofocus>
+            <form:label path="email" for="email" class="sr-only">Email</form:label>
+            <form:input path="email" type="email" id="email" name="email" class="form-control" placeholder="Email" required="true" autofocus="true"/>
+            <form:errors path="email"/>
         </p>
         <p>
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username" onchange="uniqueUsernameValidation(document.getElementById('username'))" required autofocus>
+            <form:label path="username" for="username" class="sr-only">Username</form:label>
+            <form:input path="username" type="text" id="username" name="username" class="form-control" placeholder="Username" required="true"/>
+            <form:errors path="username"/>
         </p>
         <p>
-            <label for="firstname" class="sr-only">First name</label>
-            <input type="text" id="firstname" name="firstName" class="form-control" placeholder="First name" required autofocus>
+            <form:label path="firstName" for="firstname" class="sr-only">First name</form:label>
+            <form:input path="firstName" type="text" id="firstname" name="firstName" class="form-control" placeholder="First name" required="true"/>
+            <form:errors path="firstName"/>
         </p>
         <p>
-            <label for="secondname" class="sr-only">Second name</label>
-            <input type="text" id="secondname" name="lastName" class="form-control" placeholder="Last name" required autofocus>
+            <form:label path="lastName" for="secondname" class="sr-only">Second name</form:label>
+            <form:input path="lastName" type="text" id="secondname" name="lastName" class="form-control" placeholder="Last name" required="true"/>
+            <form:errors path="lastName"/>
         </p>
         <p>
-            <label for="patronymic" class="sr-only">Patronymic</label>
-            <input type="text" id="patronymic" name="patronymic" class="form-control" placeholder="Patronymic" required autofocus>
+            <form:label path="patronymic" for="patronymic" class="sr-only">Patronymic</form:label>
+            <form:input path="patronymic" type="text" id="patronymic" name="patronymic" class="form-control" placeholder="Patronymic" required="true"/>
+            <form:errors path="patronymic"/>
         </p>
         <p>
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+            <form:label path="password" for="password" class="sr-only">Password</form:label>
+            <form:input path="password" type="password" id="password" name="password" class="form-control" placeholder="Password" required="true"/>
+            <form:errors path="password"/>
         </p>
-        <input type="button" value="Sign up" class="btn btn-lg btn-primary btn-block" onclick="createCustomer()">
+        <input type="submit" value="Sign up" class="btn btn-lg btn-primary btn-block">
         <p class="mt-2">Already have an account? <a href="/login">Log In</a></p>
-    </form>
+    </form:form>
 </div>
 </body></html>

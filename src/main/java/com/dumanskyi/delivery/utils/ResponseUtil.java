@@ -1,6 +1,6 @@
 package com.dumanskyi.delivery.utils;
 
-import com.dumanskyi.delivery.controller.ResponseMessage;
+import com.dumanskyi.delivery.entities.ResponseMessage;
 import lombok.experimental.UtilityClass;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
