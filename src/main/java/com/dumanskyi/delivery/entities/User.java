@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Collection;
@@ -37,8 +38,6 @@ public class User implements UserDetails {
     @NotNull
     @Size(min=2, max=50)
     private String lastName;
-    @NotNull
-    @Size(min=2, max=50)
     private String patronymic;
     @NotNull
     @Size(min=5, max=30)
@@ -58,7 +57,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getName());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
         return Collections.singleton(authority);
     }
     @Override

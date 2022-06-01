@@ -1,0 +1,6 @@
+.form-signin input[type="password"], .form-signin input[type="email"] {
+    border-radius: .25rem;
+}
+.form-signin input[type="button"] {
+    width:100%;
+}

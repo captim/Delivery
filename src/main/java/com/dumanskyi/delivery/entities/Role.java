@@ -4,16 +4,11 @@ import lombok.Getter;
 
 @Getter
 public enum Role {
-    CUSTOMER(0, "CUSTOMER"),
-    ADMIN(1, "ADMIN"),
-    DELIVERY_MAN(2, "DELIVERY_MAN");
-    private int id;
-    private String name;
-    Role(int id, String name) {
+    CUSTOMER(0),
+    ADMIN(1),
+    DELIVERYMAN(2);
+    private final int id;
+    Role(int id) {
         this.id = id;
-        this.name = name;
-    }
-    Role() {
-
     }
 }

@@ -1,6 +1,5 @@
 package com.dumanskyi.delivery.config;
 
-import com.dumanskyi.delivery.entities.User;
 import com.dumanskyi.delivery.persistence.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,15 +11,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.List;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private final UserRepository userRepository;
     private final UserDetailsService userDetailsService;
-    public SecurityConfig(UserRepository userRepository, UserDetailsService userDetailsService) {
-        this.userRepository = userRepository;
+    public SecurityConfig(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
@@ -34,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                //.antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers("/anonymous/**","/login", "/registration", "/resources/**", "/css/**", "/welcome", "/", "/createCustomer").permitAll()
                 //.antMatchers().permitAll()
                 .anyRequest().authenticated()

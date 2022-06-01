@@ -1,3 +1,6 @@
+<%@ page import="org.springframework.security.authentication.UsernamePasswordAuthenticationToken" %>
+<%@ page import="org.springframework.security.core.GrantedAuthority" %>
+<%@ page import="java.util.stream.Collectors" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -14,6 +17,9 @@
                 let header_url = "resources/anonym_header.html";
                 <sec:authorize access="isAuthenticated()">
                     header_url = "resources/header.html";
+                </sec:authorize>
+                <sec:authorize access="hasAuthority('ADMIN')">
+                    header_url = "resources/admin_header.html"
                 </sec:authorize>
                 $("#header").load(header_url);
             });

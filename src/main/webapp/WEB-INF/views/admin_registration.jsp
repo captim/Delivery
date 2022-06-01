@@ -12,11 +12,24 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
     <link href="/resources/css/registration_form.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <% if("true".equals(request.getParameter("customerUserCreated"))) {%>
+    <script>
+        alert("Account successfully created");
+    </script>
+    <%}%>
 </head>
 <body>
 <div class="container">
-    <form:form class="form-signin" id="signup-form" action="/registration" modelAttribute="user">
-        <h2 class="form-signin-heading">Please sign up</h2>
+    <form:form class="form-signin" id="signup-form" action="/admin/registration" modelAttribute="user">
+        <h2 class="form-signin-heading">Account registration</h2>
+        <p>
+            <form:label path="role" for="role" class="sr-only">Role</form:label>
+            <form:select path="role" id="role" name="role" class="form-control p-1">
+                <form:option class="form-control" value="ADMIN">Admin</form:option>
+                <form:option class="form-control" value="DELIVERYMAN">Deliveryman</form:option>
+            </form:select>
+            <form:errors path="role"/>
+        </p>
         <p>
             <form:label path="email" for="email" class="sr-only">Email</form:label>
             <form:input path="email" type="email" id="email" name="email" class="form-control" placeholder="Email" required="true" autofocus="true"/>
@@ -47,8 +60,8 @@
             <form:input path="password" type="password" id="password" name="password" class="form-control" placeholder="Password" required="true"/>
             <form:errors path="password"/>
         </p>
-        <input type="submit" value="Sign up" class="btn btn-lg btn-primary btn-block">
-        <p class="mt-2">Already have an account? <a href="/login">Log In</a></p>
+        <input type="submit" value="Submit" class="btn btn-lg btn-primary btn-block my-3">
+        <input type="button" value="Back" class="btn btn-lg btn-secondary my-3" onclick="window.location.href = '/welcome';">
     </form:form>
 </div>
 </body></html>
