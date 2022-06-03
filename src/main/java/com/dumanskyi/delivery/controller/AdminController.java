@@ -1,8 +1,7 @@
 package com.dumanskyi.delivery.controller;
 
-import com.dumanskyi.delivery.entities.User;
+import com.dumanskyi.delivery.entities.db.User;
 import com.dumanskyi.delivery.persistence.UserRepository;
-import com.dumanskyi.delivery.services.api.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;

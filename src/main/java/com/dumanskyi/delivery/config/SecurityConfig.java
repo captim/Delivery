@@ -1,6 +1,6 @@
 package com.dumanskyi.delivery.config;
 
-import com.dumanskyi.delivery.persistence.UserRepository;
+import com.dumanskyi.delivery.entities.db.Role;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -29,8 +29,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/anonymous/**","/login", "/registration", "/resources/**", "/css/**", "/welcome", "/", "/createCustomer").permitAll()
+                .antMatchers("/admin/**").hasAuthority(Role.ADMIN.name())
+                .antMatchers("/customer/**").hasAuthority(Role.CUSTOMER.name())
+                .antMatchers("/city","/cities","/post","/anonymous/**","/login", "/registration", "/resources/**", "/css/**", "/welcome", "/", "/createCustomer").permitAll()
                 //.antMatchers().permitAll()
                 .anyRequest().authenticated()
                 .and()

@@ -1,4 +1,4 @@
-package com.dumanskyi.delivery.entities;
+package com.dumanskyi.delivery.entities.db;
 
 import lombok.Getter;
 

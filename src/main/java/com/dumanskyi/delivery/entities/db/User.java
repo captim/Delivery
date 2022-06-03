@@ -1,8 +1,12 @@
-package com.dumanskyi.delivery.entities;
+package com.dumanskyi.delivery.entities.db;
 
 import com.dumanskyi.delivery.entities.validators.annotations.DatabaseField;
 import com.dumanskyi.delivery.entities.validators.annotations.Unique;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,8 +18,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Collection;
@@ -50,6 +55,9 @@ public class User implements UserDetails {
     @Size(min=4, max=30)
     @Unique(databaseField = DatabaseField.USERNAME)
     private String username;
+    @ManyToOne
+    @JoinColumn(name = "shipping_address_id")
+    private ShippingAddress shippingAddress;
 
     @Column(name = "role_id")
     @Enumerated(EnumType.ORDINAL)

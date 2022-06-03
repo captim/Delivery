@@ -1,15 +1,15 @@
-package com.dumanskyi.delivery.entities;
+package com.dumanskyi.delivery.entities.novaposhta.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseMessage<T> {
-    private String message;
-    private T value;
+public class KeyValue {
+    private String key;
+    private String value;
 }

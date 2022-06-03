@@ -1,0 +1,25 @@
+<form class="border rounded" style="width:50%" method="post" action="/customer/shipping-address">
+    <div class="container p-3">
+        <p id="form-label" class="h5 p-2">Shipping address</p>
+        <div class="form-group dropdown p-2">
+            <label for="city_name" class="m-2">City</label>
+            <input type="text" id="city_id" style="display: none">
+            <input class="form-control mx-2" type="text" id="city_name" onclick="showCityList()" placeholder="Choose city" style="background-color: white" readonly>
+            <div id="dropdownWarehouseList" class="dropdown-content">
+                <input type="text" placeholder="Search.." id="filter" onkeyup="filterFunction()" class="border p-2 px-4">
+                <div class="options" id="options">
+                </div>
+            </div>
+        </div>
+        <div class="form-group p-2">
+            <label for="warehouse_number" class="m-2">Warehouse</label>
+            <input class="form-control mx-2" type="text" id="warehouse_number" placeholder="Enter warehouse number" style="width:85%" disabled>
+        </div>
+        <div class="form-group p-2">
+            <input class="btn btn-secondary m-2 my-3" type="button" id="warehouse_search_button" onclick="searchWarehouse()" value="Search" disabled>
+            <input class="form-control" name="warehouse_id" id="warehouse_id" style="display: none">
+            <p class="p-2" id="warehouse_address_msg"></p>
+        </div>
+        <input type="submit" class="btn btn-primary mx-3" id="set_address_button" value="Set shipping address" disabled>
+    </div>
+</form>

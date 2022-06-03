@@ -16,7 +16,7 @@ CREATE TABLE `delivery_db`.`users`
 CREATE TABLE `delivery_db`.`shipping_addresses`
 (
     `shipping_address_id`    INT         NOT NULL AUTO_INCREMENT,
-    `shipping_address_value` VARCHAR(75) NOT NULL,
+    `np_warehouse_id` VARCHAR(40) NOT NULL,
     PRIMARY KEY (`shipping_address_id`)
 );
 

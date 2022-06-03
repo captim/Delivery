@@ -1,6 +1,6 @@
 package com.dumanskyi.delivery.services.impl;
 
-import com.dumanskyi.delivery.entities.User;
+import com.dumanskyi.delivery.entities.db.User;
 import com.dumanskyi.delivery.persistence.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
