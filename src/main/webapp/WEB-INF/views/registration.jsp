@@ -13,7 +13,7 @@
     <link href="/resources/css/registration_form.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-<body>
+<body style="background-image: url('/resources/imgs/background.jpg');">
 <div class="container">
     <form:form class="form-signin" id="signup-form" action="/registration" modelAttribute="user">
         <h2 class="form-signin-heading">Please sign up</h2>

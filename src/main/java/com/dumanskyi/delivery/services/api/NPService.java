@@ -12,4 +12,7 @@ public interface NPService {
     List<KeyValue> getWarehouseByCityId(String id);
     List<KeyValue> getWarehouseByCityIdAndNumber(String id, int number);
     List<KeyValue> getWarehouseById(String id);
+    List<KeyValue> getCityByWarehouseId(String id);
+
+    String getWarehouseFullAddressById(String id);
 }

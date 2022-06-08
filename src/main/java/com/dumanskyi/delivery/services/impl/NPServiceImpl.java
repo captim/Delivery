@@ -71,6 +71,24 @@ public class NPServiceImpl implements NPService {
         return requestBodyToKeyValueMap(responseBody);
     }
 
+    @Override
+    public List<KeyValue> getCityByWarehouseId(String id) {
+        NPRequestBody requestBody = NPRequestBodyUtil.getWarehousesById(id);
+        NPResponseBody responseBody = RequestsUtil.sendRequestNP(apiUri, requestBody);
+        List<KeyValue> keyValues = new ArrayList<>();
+        for (Map<String, Object> data : responseBody.getData()) {
+            keyValues.add(new KeyValue((String)data.get(NPDataConstants.CITY_REF), (String)data.get(NPDataConstants.CITY_DESCRIPTION)));
+        }
+        return keyValues;
+    }
+
+    @Override
+    public String getWarehouseFullAddressById(String id) {
+        KeyValue city = getCityByWarehouseId(id).get(0);
+        KeyValue warehouse = getWarehouseById(id).get(0);
+        return city.getValue() + ": " + warehouse.getValue();
+    }
+
     private List<KeyValue> requestBodyToKeyValueMap(NPResponseBody responseBody) {
         List<KeyValue> keyValues = new ArrayList<>();
         for (Map<String, Object> data : responseBody.getData()) {

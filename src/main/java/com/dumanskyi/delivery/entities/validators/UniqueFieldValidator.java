@@ -12,11 +12,9 @@ import javax.validation.ConstraintValidatorContext;
 public class UniqueFieldValidator implements ConstraintValidator<Unique, String> {
 
     static private UserRepository userRepository;
-    //private UserRepository userRepository;
     private Unique annotation;
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
-        //this.userRepository = userRepository;
         UniqueFieldValidator.userRepository = userRepository;
     }
 

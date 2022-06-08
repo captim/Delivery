@@ -18,7 +18,7 @@
     </script>
     <%}%>
 </head>
-<body>
+<body style="background-image: url('/resources/imgs/background.jpg');">
 <div class="container">
     <form:form class="form-signin" id="signup-form" action="/admin/registration" modelAttribute="user">
         <h2 class="form-signin-heading">Account registration</h2>

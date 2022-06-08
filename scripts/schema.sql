@@ -23,15 +23,19 @@ CREATE TABLE `delivery_db`.`shipping_addresses`
 
 CREATE TABLE `delivery_db`.`requests`
 (
-    `requests_id`     INT         NOT NULL AUTO_INCREMENT,
+    `request_id`     INT         NOT NULL AUTO_INCREMENT,
     `user_id`         INT         NOT NULL,
     `creation_date`   DATETIME    NOT NULL,
     `status_id`       INT         NOT NULL,
     `delivery_number` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`requests_id`)
+    `package_size_id` INT NOT NULL,
+    `transaction_id` VARCHAR(45) NOT NULL,
+    `shipping_address_id` INT,
+    PRIMARY KEY (`request_id`)
 );
 
 
+/*
 CREATE TABLE `delivery_db`.`statuses`
 (
     `status_id`          INT          NOT NULL AUTO_INCREMENT,
@@ -39,6 +43,7 @@ CREATE TABLE `delivery_db`.`statuses`
     `status_description` VARCHAR(150) NOT NULL,
     PRIMARY KEY (`status_id`)
 );
+*/
 
 
 -- INDEXES/FOREIGN_KEYS --
@@ -58,9 +63,10 @@ ALTER TABLE `delivery_db`.`requests`
         ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `delivery_db`.`requests`
-    ADD INDEX `status_id_idx` (`status_id` ASC) VISIBLE;
+    ADD INDEX `shipping_address_request_idx` (`shipping_address_id` ASC) VISIBLE;
 ALTER TABLE `delivery_db`.`requests`
-    ADD CONSTRAINT `status_id` FOREIGN KEY (`status_id`)
-        REFERENCES `delivery_db`.`statuses` (`status_id`)
-        ON DELETE RESTRICT ON UPDATE RESTRICT;
-
+    ADD CONSTRAINT `shipping_address_id`
+        FOREIGN KEY (`shipping_address_id`)
+            REFERENCES `delivery_db`.`shipping_addresses` (`shipping_address_id`)
+            ON DELETE RESTRICT
+            ON UPDATE CASCADE;

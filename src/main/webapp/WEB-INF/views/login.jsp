@@ -15,7 +15,7 @@
     </script>
     <%}%>
 </head>
-<body>
+<body style="background-image: url('/resources/imgs/background.jpg');">
 <div class="container">
     <form class="form-signin" method="post" action="/login">
         <h2 class="form-signin-heading">Please sign in</h2>

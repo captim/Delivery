@@ -18,6 +18,16 @@
         <java.version>1.11</java.version>
         <start-class>com.dumanskyi.delivery.config.DeliveryApplication</start-class>
     </properties>
+    <repositories>
+        <repository>
+            <id>repository</id>
+            <url>https://github.com/liqpay/sdk-java/raw/repository</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -91,6 +101,11 @@
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.liqpay</groupId>
+            <artifactId>liqpay-sdk</artifactId>
+            <version>0.7-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

@@ -2,29 +2,17 @@ package com.dumanskyi.delivery.entities.db;
 
 import com.dumanskyi.delivery.entities.validators.annotations.DatabaseField;
 import com.dumanskyi.delivery.entities.validators.annotations.Unique;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -33,6 +21,7 @@ import java.util.Collections;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,10 +52,16 @@ public class User implements UserDetails {
     @Enumerated(EnumType.ORDINAL)
     private Role role;
 
+    @OneToMany(mappedBy = "user")
+    private List<Request> requestList;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
         return Collections.singleton(authority);
+    }
+    public String getFullName() {
+        return lastName + " " + firstName + " " + patronymic;
     }
     @Override
     public boolean isAccountNonExpired() {

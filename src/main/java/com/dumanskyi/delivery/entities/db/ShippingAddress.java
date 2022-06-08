@@ -31,4 +31,7 @@ public class ShippingAddress {
     @JsonIgnore
     @OneToMany(mappedBy = "shippingAddress", cascade = CascadeType.ALL)
     private List<User> users;
+    @JsonIgnore
+    @OneToMany(mappedBy = "shippingAddress", cascade = CascadeType.ALL)
+    private List<Request> requests;
 }
