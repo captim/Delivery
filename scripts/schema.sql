@@ -34,16 +34,24 @@ CREATE TABLE `delivery_db`.`requests`
     PRIMARY KEY (`request_id`)
 );
 
+CREATE TABLE `delivery_db`.`roles` (
+    `role_id` INT NOT NULL,
+    `role_name` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`role_id`));
 
-/*
-CREATE TABLE `delivery_db`.`statuses`
-(
-    `status_id`          INT          NOT NULL AUTO_INCREMENT,
-    `status_name`        VARCHAR(30)  NOT NULL,
-    `status_description` VARCHAR(150) NOT NULL,
-    PRIMARY KEY (`status_id`)
-);
-*/
+CREATE TABLE `delivery_db`.`package_sizes` (
+    `package_size_id` INT NOT NULL,
+    `name` VARCHAR(45) NOT NULL,
+    `max_weight` INT NOT NULL,
+    `price` FLOAT NOT NULL,
+    PRIMARY KEY (`package_size_id`));
+
+CREATE TABLE `delivery_db`.`statuses` (
+    `status_id` INT NOT NULL,
+    `status_name` VARCHAR(45) NOT NULL,
+    `message` VARCHAR(45) NOT NULL,
+    `short_message` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`status_id`));
 
 
 -- INDEXES/FOREIGN_KEYS --
@@ -65,7 +73,7 @@ ALTER TABLE `delivery_db`.`requests`
 ALTER TABLE `delivery_db`.`requests`
     ADD INDEX `shipping_address_request_idx` (`shipping_address_id` ASC) VISIBLE;
 ALTER TABLE `delivery_db`.`requests`
-    ADD CONSTRAINT `shipping_address_id`
+    ADD CONSTRAINT `shipping_address_request`
         FOREIGN KEY (`shipping_address_id`)
             REFERENCES `delivery_db`.`shipping_addresses` (`shipping_address_id`)
             ON DELETE RESTRICT

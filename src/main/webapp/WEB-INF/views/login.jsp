@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +16,7 @@
 </head>
 <body style="background-image: url('/resources/imgs/background.jpg');">
 <div class="container">
-    <form class="form-signin" method="post" action="/login">
+    <form class="form-signin bg-white border rounded border-secondary" method="post" action="/login">
         <h2 class="form-signin-heading">Please sign in</h2>
         <p>
             <label for="username" class="sr-only">Username</label>

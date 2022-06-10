@@ -18,6 +18,14 @@ import java.util.Locale;
 @Configuration
 @ComponentScan("com.dumanskyi.delivery")
 public class MappingConfig implements WebMvcConfigurer {
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+                .addResourceHandler("/resources/**")
+                .addResourceLocations("/WEB-INF/views/components/")
+                .resourceChain(true)
+                .addResolver(new PathResourceResolver());
+    }
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -30,13 +38,5 @@ public class MappingConfig implements WebMvcConfigurer {
         SessionLocaleResolver slr = new SessionLocaleResolver();
         slr.setDefaultLocale(Locale.ENGLISH);
         return slr;
-    }
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
-                .addResourceHandler("/resources/**")
-                .addResourceLocations("/WEB-INF/views/components/")
-                .resourceChain(true)
-                .addResolver(new PathResourceResolver());
     }
 }

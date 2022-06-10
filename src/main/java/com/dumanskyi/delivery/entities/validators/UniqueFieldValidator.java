@@ -33,7 +33,7 @@ public class UniqueFieldValidator implements ConstraintValidator<Unique, String>
                 case EMAIL:
                     return userRepository.findUserByEmailEquals(field).isEmpty();
             }
-            throw new IllegalArgumentException("There is no such field (idk)¯\\_(ツ)_/¯");
+            throw new IllegalArgumentException("There is no such field");
         } catch (AssertionFailure ignored) {
             return true;
         }

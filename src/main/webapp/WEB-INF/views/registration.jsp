@@ -15,7 +15,7 @@
 </head>
 <body style="background-image: url('/resources/imgs/background.jpg');">
 <div class="container">
-    <form:form class="form-signin" id="signup-form" action="/registration" modelAttribute="user">
+    <form:form class="form-signin bg-white border rounded border-secondary" id="signup-form" action="/registration" modelAttribute="user">
         <h2 class="form-signin-heading">Please sign up</h2>
         <p>
             <form:label path="email" for="email" class="sr-only">Email</form:label>
