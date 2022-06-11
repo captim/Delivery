@@ -20,7 +20,7 @@
 </head>
 <body style="background-image: url('/resources/imgs/background.jpg');">
 <div class="container">
-    <form:form class="form-signin" id="signup-form" action="/admin/registration" modelAttribute="user">
+    <form:form class="form-signin bg-white border rounded border-secondary" id="signup-form" action="/admin/registration" modelAttribute="user">
         <h2 class="form-signin-heading">Account registration</h2>
         <p>
             <form:label path="role" for="role" class="sr-only">Role</form:label>
